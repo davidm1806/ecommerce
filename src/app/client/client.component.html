@@ -1,0 +1,67 @@
+<div class="container formContent">
+  <div class="row">
+    <div class="offset-2 col-md-8 col-ms-8 col-12">
+      <h4 class="font-weight-bold text-center">Cr�ation compte</h4><br/>
+      <form (ngSubmit)="saveClient()"  [formGroup]="registerForm">
+
+    <div class="form-group">
+      <label class="font-weight-bolder">Nom : </label>
+      <input type="text" formControlName="firstName" class="form-control" name="firstName" placeholder="enter firstname">
+      <small *ngIf="f.firstName.invalid" id="nameHelp" class="form-text text-muted">Veillez entrer votre nom</small>
+    </div>
+    <div class="form-group">
+      <label class="font-weight-bolder" for="prenom">prenom:</label>
+      <input type="text" formControlName="lastName" class="form-control" id="prenom"  name="lastName" placeholder="votre lastname">
+      <small *ngIf="f.lastName.invalid && submitted" class="form-text text-muted">Veillez entrer votre prénom</small>
+    </div>
+    <div class="form-group">
+      <label class="font-weight-bolder" for="Email">adresse email</label>
+      <input type="email" formControlName="email" class="form-control" id="Email"  name="email" placeholder="enter email">
+      <small  *ngIf="f.email.invalid && submitted" class="form-text text-muted">entrer une adresse email valide</small>
+    </div>
+    <div class="form-group">
+      <label class="font-weight-bolder" for="password">mot de passe</label>
+      <input type="password" formControlName="password" class="form-control" id="password"  name="password" placeholder="enter password">
+      <small *ngIf="f.password.invalid" class="form-text text-danger">Le mot de pass doit contenir au moins 6 caractère</small>
+    </div>
+    <div class="form-group">
+      <label class="font-weight-bolder" for="confirmP">confirmez le mot de passe:</label>
+      <input type="password" formControlName="confirmPassword" class="form-control" id="confirmP"  name="passwordConfir" placeholder="Enter password">
+      <!--<small  *ngIf="f.confirmPassword.hasError('confirmPassword')" class="form-text text-muted">Veillez confirmer le mot de passe</small>-->
+      <small  *ngIf="f.confirmPassword.invalid" class="form-text text-danger">les mots de passe ne sont pas identique</small>
+    </div>
+    <div class="form-group">
+      <label class="font-weight-bolder" for="tel">numero de téléphone: </label>
+      <input formControlName="phone" type="tel" class="form-control" id="tel"  name="phone" placeholder="Enter phone number">
+      <small *ngIf="f.phone.invalid && submitted" id="emailHelp" class="form-text text-muted">Veillez entrer votre numéro de téléphone</small>
+    </div>
+    <div class="form-group">
+      <label class="font-weight-bolder" for="ville">Ville:</label>
+      <input type="text" formControlName="ville" class="form-control" id="ville"  name="ville" placeholder="enter city">
+      <small id="passHelp" class="form-text text-muted">Must be 8 characters long</small>
+    </div>
+    <div class="form-group">
+      <label class="font-weight-bolder" for="qt">quartier:</label>
+      <input type="text" formControlName="quartier" class="form-control" id="qt"  name="quartier" placeholder="Enter adresse">
+      <small id="qt" class="form-text text-muted"></small>
+    </div><div class="form-group">
+      <label class="font-weight-bolder">adresse de livraison:</label>
+      <input type="text" formControlName="adresseLiv" class="form-control"  name="adresseLiv" placeholder="Enter billing adresse">
+      <small  class="form-text text-muted"></small>
+    </div>
+
+    <div class="form-check">
+      <input type="checkbox" formControlName="acceptTerms" class="form-check-input" id="CheckDemo"/>
+      <label *ngIf="f.acceptTerms.invalid && submitted" class="form-check-label" for="CheckDemo">acceptez les condition d'utilisation</label>
+    </div><br/><br/>
+
+    <button type="submit" class="btn btn-success">créer compte</button>
+        <button class="ml-4 btn btn-dark" type="reset" (click)="reset()">annuler</button>
+  </form>
+  <br/><br/>
+
+    </div>
+  </div>
+</div>
+
+

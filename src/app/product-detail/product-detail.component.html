@@ -1,0 +1,40 @@
+<div class="card" *ngIf="curentProduct" style="width: 800px">
+  <div class="card-header">
+    <h3 class="card-title">{{curentProduct.name}}</h3>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-5 col-ms-4">
+        <table>
+              <tr>
+                <td>
+                  <img src="{{this.catService.host + '/getImage/' + curentProduct.id}}" alt="article"/>
+                </td>
+              </tr>
+            </table>
+            <div>
+              <span *ngIf="curentProduct.selected"><img src="assets/icone/icons8-coeur-48.png"></span>
+              <span *ngIf="curentProduct.availability"><img src="assets/icone/icons8-ok-48.png"></span>
+            </div>  
+              
+          
+              <form #f="ngForm" (ngSubmit)="onAddProduct(p)">
+                  <div class="row form-group">
+                    <div class="col-md-6"><label class="form-control">Quantite :</label></div>
+                    <div class="col-md-4"><input class="form-control" type="number" name="quantity" [(ngModel)]="curentProduct.quantity" ngModel></div>
+                  </div>
+                  <button class="form-control" (click)='onAddProduct()'>
+                        <img src="assets/icone/panier.png">
+                  </button>
+              </form>
+      </div>
+      <div class="offset-md-1 col-md-4 col-ms-4">
+        <span class="text-danger">price : {{curentProduct.price}}</span><br/><br/>
+        <span>
+          description : {{curentProduct.description}}
+        </span>
+      </div>
+    </div>
+     
+  </div>
+</div>

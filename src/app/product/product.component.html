@@ -1,0 +1,32 @@
+<div class="row" *ngIf = "products">
+  <div  class="card col-md-5 col-ms-8 mr-3 mb-3" *ngFor="let p of products._embedded.products">
+        <div class="card-header">{{p.name}}</div>
+        <div class="card-body">
+          <table>
+              <tr>
+                <td>
+                  <img (click)='productDetail(p)' src="{{this.catalogue.host + '/getImage/' + p.id}}" alt="article"/>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="text-dark"><h5>price : {{p.price|number: '0.2'}}</h5></span></td>
+              </tr>
+            </table>
+            <div>
+              <span *ngIf="p.selected"><img src="assets/icone/icons8-coeur-48.png"></span>
+              <span *ngIf="p.availability"><img src="assets/icone/icons8-ok-48.png"></span>
+            </div>
+              
+          
+              <form #f="ngForm" (ngSubmit)="onAddProduct(p)">
+                  <div class="row form-group">
+                    <div class="col-md-6"><label class="form-control">Quantite :</label></div>
+                    <div class="col-md-4"><input class="form-control" type="number" name="quantity" [(ngModel)]="p.quantity" ngModel></div>
+                  </div>
+                  <button class="form-control">
+                        <img src="assets/icone/panier.png">
+                  </button>
+              </form>
+        </div>
+    </div>
+</div>

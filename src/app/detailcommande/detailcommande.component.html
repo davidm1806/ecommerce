@@ -1,0 +1,71 @@
+<div class="card col-12 wrapper">
+  <div [ngClass]="{
+          'card-header': true,
+          'bg-success' : commande.pay,
+          'bg-warning' : !commande.pay
+       }"><h3>Recapitulatif de la commande</h3></div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-6 col-ms-6 col-12">
+        <div class="row form-group mb-0">
+          <div class="col-md-4 col-ms-4 col-6"><label class="col-form-label">Nom: </label></div>
+          <div class="col-md-8 col-ms-8 col-6"><label class="col-form-label">{{custumer.firstName }}</label></div>
+        </div>
+        <div class="row form-group mb-0">
+          <div class="col-md-4 col-ms-4 col-6"><label class="col-form-label">Adresse: </label></div>
+          <div class="col-md-8 col-ms-8 col-6"><label class="col-form-label"> {{custumer.lastName}}</label></div>
+        </div>
+        <div class="row form-group mb-0">
+          <div class="col-md-4 col-ms-4 col-6"><label class="col-form-label">telephone: </label></div>
+          <div class="col-md-8 col-ms-8 col-6"><label class="col-form-label"></label>{{custumer.phone}}</div>
+        </div>
+        <div class="row form-group mb-0">
+          <div class="col-md-4 col-ms-4 col-6"><label class="col-form-label">email:</label></div>
+          <div class="col-md-8 col-ms-8 col-6"><label class="col-form-label">{{custumer.email}}</label></div>
+        </div>
+
+      </div>
+      <div class="col-md-6 col-ms-6 col-12">
+        <div class="row form-group mb-0">
+          <div class="col-md-4 col-ms-4 col-6"><label class="col-form-label">ID cmd:</label></div>
+          <div class="col-6"><label class="col-form-label"></label></div>
+        </div>
+        <div class="row form-group mb-0">
+          <div class="col-md-5 col-ms-5 col-6"><label class="col-form-label">addresse:</label></div>
+          <div class="col-7"><label class="col-form-label">{{custumer.adresseLiv}}</label></div>
+        </div>
+        <div class="row form-group mb-0">
+          <div class="col-md-4 col-ms-4 col-6"><label class="col-form-label">Date :</label></div>
+          <div class="col-md-8 col-ms-8 col-6"><label class="col-form-label"></label></div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mt-4">
+        <table class="table table-dark table-striped">
+          <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Quantité</th>
+            <th>prix</th>
+            <th>sous total</th>
+          </tr>
+          </thead>
+          <tbody *ngFor= "let items of this.caddyService.caddy.item">
+          <td>{{items.id}}</td>
+          <td>{{items.name}}</td>
+          <td>{{items.quantity}}</td>
+          <td>{{items.price  | number: '0.2'}}</td>
+          <td>{{this.caddyService.getSousT(items)}}</td>
+          </tbody>
+        </table>
+        <br/><br/>
+        <h4><span class="text-md-left font-weight-bold">Total : {{this.caddyService.totalCommade()}}</span></h4>
+      </div>
+    </div>
+    <button *ngIf="confirmeCommande" (click)="confirmationCommande()" class="btn btn-warning">Confirmez la commande</button>
+    <button *ngIf="pay" (click)="payer()" class="btn btn-success">payer la commande</button>
+
+  </div>
+</div>

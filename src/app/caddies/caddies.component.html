@@ -1,0 +1,36 @@
+<div class="container">
+  <h2>Panier</h2>
+  <p></p>
+  <table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Quantité</th>
+        <th>prix</th>
+        <th>sous total</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor= "let items of this.caddyService.caddy.item">
+        <td>{{items.id}}</td>
+        <td>{{items.name}}</td>
+        <td>{{items.quantity}}</td>
+        <td>{{items.price  | number: '0.2'}}</td>
+        <td>{{caddyService.getSousT(items)  | number: '0.2'}}</td>
+        <td (click)="this.caddyService.deleteItem(this.caddyService.currentLigne)" id="supprime"><span class="text-warning">supprimer</span></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td class="text-danger"><br/>Total</td>
+        <td class="text-danger"><br/>{{caddyService.totalCommade() | number: '0.2'}}</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <br/>
+  <button routerLink="/login" class="btn btn-primary btn-lg">COMMANDER</button>
+</div>

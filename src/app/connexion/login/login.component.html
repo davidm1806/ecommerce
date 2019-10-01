@@ -1,0 +1,26 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <!--<div class="fadeIn first">
+      <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+    </div> -->
+
+    <!-- Login Form -->
+    <br/> <br/><br/><br/>
+    <form [formGroup]="registerForm" (ngSubmit)="onLogin()">
+      <input type="text" formControlName="confirlogin" name="confirlogin" class="fadeIn second" placeholder="login">
+      <input type="text" formControlName="password" name="password" class="fadeIn third"  placeholder="password">
+      <label class="fadeIn second text-danger text-center font-weight-bold" *ngIf="controlAff==true">{{registerForm.value.message}}</label>
+      <br/><br/>
+      <input type="submit" class="fadeIn fourth" value="Log In">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a routerLink="/formclient" class="underlineHover" href="#">S'enregistrer</a><br/>
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+
+  </div>
